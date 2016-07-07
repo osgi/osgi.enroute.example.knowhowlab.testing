@@ -1,0 +1,4 @@
+# Configure Repositories
+-releaserepo: Release
+-baselinerepo: Release
+

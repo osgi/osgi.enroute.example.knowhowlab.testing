@@ -1,0 +1,23 @@
+-buildpath: \
+	osgi.enroute.base.api, \
+	osgi.enroute.example.knowhowlab.testing.archiver.api;version=latest
+
+-testpath: \
+	osgi.enroute.junit.wrapper
+
+Bundle-Version: 1.0.0.${tstamp}
+Private-Package: osgi.enroute.example.knowhowlab.testing.archiver
+
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.example.knowhowlab.testing.archiver)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.configadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.eventadmin)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.runtime)',\
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.example.knowhowlab.testing.consumer.console)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.webconsole.plugins.ds)',\
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.example.knowhowlab.testing.provider)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.shell)'
+
+
+Export-Package: osgi.enroute.example.knowhowlab.testing.archiver.api

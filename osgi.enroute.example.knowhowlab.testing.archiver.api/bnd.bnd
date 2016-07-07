@@ -1,0 +1,11 @@
+-buildpath: \
+	osgi.enroute.base.api
+
+-baseline: *
+
+Bundle-Version: 1.0.0.${tstamp}
+Export-Package: \
+	osgi.enroute.example.knowhowlab.testing.archiver.api
+
+Require-Capability: \
+	compile-only

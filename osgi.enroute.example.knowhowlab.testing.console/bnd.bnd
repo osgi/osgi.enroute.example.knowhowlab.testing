@@ -1,0 +1,9 @@
+-buildpath: \
+	osgi.enroute.base.api,\
+	osgi.enroute.example.knowhowlab.testing.api;version=latest
+
+-testpath: \
+	osgi.enroute.junit.wrapper
+
+Bundle-Version: 1.0.0.${tstamp}
+Private-Package: osgi.enroute.example.knowhowlab.testing.consumer.console

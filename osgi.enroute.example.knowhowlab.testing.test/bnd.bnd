@@ -1,0 +1,51 @@
+
+# This is the version of Mockito that will be used at build time and run time
+mockito: org.mockito.mockito-core;version="[1.9,2)",\
+  org.objenesis;version="[2.1,3)"
+
+# Discover and run all test cases annotated with the @RunWith annotation
+Test-Cases: ${classes;CONCRETE;ANNOTATED;org.junit.runner.RunWith}
+
+# Build dependencies 
+-buildpath: \
+	osgi.enroute.base.api, \
+	osgi.enroute.junit.wrapper,\
+	org.mockito.mockito-all,\
+	org.knowhowlab.osgi.testing.assertions,\
+	org.knowhowlab.osgi.testing.utils,\
+	osgi.enroute.example.knowhowlab.testing.api;version=latest,\
+	osgi.enroute.example.knowhowlab.testing.archiver.api;version=latest
+
+# We need JUnit and Mockito to resolve the test cases at runtime. 
+# Other runtime dependencies should be added as necessary
+-runbundles: \
+	org.apache.felix.log;version='[1.0.1,1.0.2)',\
+	org.knowhowlab.osgi.testing.assertions;version='[1.3.0,1.3.1)',\
+	org.knowhowlab.osgi.testing.utils;version='[1.3.0,1.3.1)',\
+	org.apache.felix.configadmin;version='[1.8.6,1.8.7)',\
+	org.apache.felix.scr;version='[2.0.0,2.0.1)',\
+	org.eclipse.equinox.metatype;version='[1.4.100,1.4.101)',\
+	org.mockito.mockito-all;version='[2.0.2,2.0.3)',\
+	org.osgi.service.metatype;version='[1.3.0,1.3.1)',\
+	osgi.enroute.example.knowhowlab.testing.test;version=snapshot,\
+	osgi.enroute.hamcrest.wrapper;version='[1.3.0,1.3.1)',\
+	osgi.enroute.junit.wrapper;version='[4.12.0,4.12.1)',\
+	org.apache.felix.gogo.command;version='[0.14.0,0.14.1)',\
+	org.apache.felix.gogo.runtime;version='[0.16.2,0.16.3)',\
+	osgi.enroute.gogo.shell.provider;version='[1.0.0,1.0.1)',\
+	org.eclipse.equinox.event;version='[1.3.100,1.3.101)',\
+	org.osgi.service.event;version='[1.3.1,1.3.2)',\
+	osgi.enroute.example.knowhowlab.testing.archiver;version=snapshot,\
+	osgi.enroute.example.knowhowlab.testing.provider;version=snapshot
+
+Bundle-Version: 0.0.0.${tstamp}
+Private-Package: osgi.enroute.example.knowhowlab.testing.test
+
+# Needed for Mockito's mocking to work
+-runsystempackages.objenesis: sun.misc,sun.reflect
+
+-runvm: -ea
+-runrequires: \
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.example.knowhowlab.testing.test)',\
+	osgi.identity;filter:='(osgi.identity=org.apache.felix.gogo.command)',\
+	osgi.identity;filter:='(osgi.identity=osgi.enroute.gogo.shell.provider)'
